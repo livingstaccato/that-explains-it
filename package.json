@@ -1,0 +1,24 @@
+{
+  "name": "explain-things-with-lots-of-tiny-raccoons-and-opossums",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google/genai": "^0.7.0",
+    "marked": "^15.0.7",
+    "jspdf": "^2.5.1",
+    "html2canvas": "^1.4.1",
+    "jszip": "^3.10.1",
+    "pptxgenjs": "^3.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
+  }
+}

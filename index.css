@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Space Mono', monospace;
+  padding: 20px;
+  background-color: light-dark(#f8f9fa, #212529);
+  color: light-dark(#343a40, #f8f9fa);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+h1 {
+  margin-bottom: 15px;
+  color: light-dark(#212529, #ffffff);
+  text-align: center;
+  font-size: 2.2em;
+}
+
+h2 {
+    margin-bottom: 15px; /* Increased space */
+    color: light-dark(#495057, #adb5bd);
+    border-bottom: 1px solid light-dark(#dee2e6, #495057);
+    padding-bottom: 8px; /* Increased padding */
+}
+
+.config-section, .prompt-section {
+    background-color: light-dark(#ffffff, #343a40);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid light-dark(#dee2e6, #495057);
+    box-shadow: 0 2px 4px light-dark(rgba(0,0,0,0.05), rgba(255,255,255,0.05));
+}
+
+.config-item {
+    margin-bottom: 18px; /* Increased space */
+}
+
+.config-item label {
+    display: block;
+    margin-bottom: 6px; /* Increased space */
+    font-weight: bold;
+    font-size: 0.95em; /* Slightly larger label */
+    color: light-dark(#495057, #dee2e6);
+}
+
+.config-item input[type="text"],
+.config-item textarea,
+.config-item select, /* Add select styling */
+textarea#input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid light-dark(#ced4da, #495057);
+  border-radius: 6px;
+  font-family: 'Space Mono', monospace;
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  background-color: light-dark(#ffffff, #3a3f44);
+  color: light-dark(#343a40, #f8f9fa);
+  font-size: 1rem;
+}
+/* Specific select appearance */
+.config-item select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23${document.body.classList.contains('dark-mode') ? 'adb5bd' : '495057'}' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E"); /* Basic SVG arrow */
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px 12px;
+    padding-right: 40px; /* Make space for arrow */
+}
+
+
+.config-item textarea,
+textarea#input {
+    min-height: 60px;
+    resize: vertical;
+}
+
+textarea#input {
+    min-height: 90px;
+}
+
+
+.config-item input[type="text"]:focus,
+.config-item textarea:focus,
+.config-item select:focus, /* Add focus style for select */
+textarea#input:focus {
+  outline: none;
+  border-color: light-dark(#1c7ed6, #66b2ff);
+  box-shadow: 0 0 0 2px light-dark(rgba(28, 126, 214, 0.2), rgba(102, 178, 255, 0.2));
+}
+
+.prompt-section > p {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: light-dark(#495057, #dee2e6);
+}
+
+#output {
+    margin-top: 10px;
+}
+
+.user-turn { /* No longer used directly in output, but kept for potential future use */
+  font-weight: normal;
+  padding: 15px 20px;
+  background-color: light-dark(#eef1f3, #2c3034);
+  border-radius: 8px;
+  border: 1px solid light-dark(#dee2e6, #495057);
+  margin-bottom: 25px;
+  page-break-after: avoid;
+  box-shadow: 0 3px 6px light-dark(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.07));
+}
+.user-turn strong {
+    font-weight: bold;
+    color: light-dark(#212529, #e9ecef);
+}
+
+
+.explanation-item {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  page-break-inside: avoid;
+  page-break-after: always; /* Still useful for @media print fallback */
+  min-height: 50vh;
+}
+
+.explanation-item img {
+  max-width: 90%;
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.explanation-item div { /* Caption */
+  font-family: "Indie Flower", cursive;
+  font-size: 24px;
+  text-align: center;
+  text-wrap: balance;
+  width: 90%;
+  color: #343a40;
+  margin-top: auto;
+}
+
+.explanation-item-text-only {
+    font-family: "Indie Flower", cursive;
+    font-size: 20px;
+    text-align: center;
+    text-wrap: balance;
+    padding: 20px;
+    margin-bottom: 25px;
+    color: #343a40;
+    background-color: #f8f9fa;
+    border: 1px dashed #adb5bd;
+    border-radius: 8px;
+    page-break-inside: avoid;
+    page-break-after: always;
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#error {
+  font-weight: bold;
+  padding: 15px 20px;
+  background-color: light-dark(#ffe7e7, #660b0b);
+  color: light-dark(#d61c1c, #ffcccc);
+  border-radius: 6px;
+  border-left: 4px solid light-dark(#d61c1c, #ff6666);
+  margin-top: 10px;
+}
+
+/* Export Controls Container */
+.export-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between buttons */
+    margin-top: 20px; /* Space above the buttons */
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+.action-button {
+  padding: 12px 25px;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  background-color: light-dark(#1c7ed6, #66b2ff);
+  color: light-dark(#ffffff, #0a2a4d);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  /* margin removed as gap is handled by container */
+  /* align-self: center; removed as container handles centering */
+}
+
+.action-button:hover:not(:disabled) {
+  background-color: light-dark(#166aaf, #80c1ff);
+  box-shadow: 0 2px 5px light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.1));
+}
+
+.action-button:disabled {
+  background-color: light-dark(#adb5bd, #495057);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Hidden state for export controls */
+.export-controls[hidden] {
+    display: none;
+}
+
+
+@media print {
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10pt;
+    max-width: 100%;
+    line-height: 1.3;
+  }
+
+  .print-hide,
+  .config-section,
+  textarea#input,
+  .prompt-section > p,
+  #error:not([hidden="false"]),
+  .export-controls, /* Hide export buttons in print */
+  h1, h2 {
+    display: none !important;
+  }
+
+  .container {
+    gap: 0;
+    box-shadow: none;
+    border: none;
+  }
+
+  #output {
+      margin-top: 0;
+  }
+
+ /* @media print styles for explanation items remain the same */
+  .explanation-item, .explanation-item-text-only {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 10mm;
+    margin: 0;
+    background-color: #ffffff !important;
+    border-radius: 0;
+    min-height: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+   .explanation-item img {
+     max-height: 60vh;
+     max-width: 100%;
+     border: none;
+     margin-bottom: 10px;
+   }
+
+   .explanation-item div, .explanation-item-text-only {
+     font-size: 12pt;
+     color: #000000 !important;
+     width: 100%;
+   }
+}

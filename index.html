@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explain Things Visually</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai@^0.7.0",
+          "marked": "https://esm.sh/marked@^15.0.7",
+          "jspdf": "https://esm.sh/jspdf@^2.5.1",
+          "html2canvas": "https://esm.sh/html2canvas@^1.4.1",
+          "jszip": "https://esm.sh/jszip@^3.10.1",
+          "pptxgenjs": "https://esm.sh/pptxgenjs@^3.12.0"
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Explain Things Visually</h1>
+
+        <div class="config-section print-hide">
+            <h2>Configuration</h2>
+
+            <div class="config-item">
+                <label for="presetSelector">Quick Presets:</label>
+                <select id="presetSelector">
+                    <option value="custom">-- Custom --</option>
+                    <option value="cats_simple">Tiny Cats (Simple & Cute)</option>
+                    <option value="robots_tech">Robots (Technical Blueprint)</option>
+                    <option value="forest_whimsy">Forest Creatures (Whimsical)</option>
+                    <option value="playdough_eli5">Playdough (Explain Like I'm 5)</option>
+                </select>
+            </div>
+
+            <div class="config-item">
+                <label for="metaphorSubject">Explain using a metaphor about:</label>
+                <input type="text" id="metaphorSubject" value="lots of tiny cats">
+            </div>
+            <div class="config-item">
+                <label for="illustrationStyle">Illustration Style Prompt:</label>
+                <textarea id="illustrationStyle">a cute, minimal illustration with black ink on white background</textarea>
+            </div>
+            <div class="config-item">
+                <label for="depthControl">Explanation Depth:</label>
+                <select id="depthControl">
+                    <option value="Detailed" selected>Detailed (Default)</option>
+                    <option value="Simple">Simple</option>
+                    <option value="Expert">Expert</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="prompt-section">
+            <h2>Your Prompt</h2>
+             <p class="print-hide">Enter the topic you want explained:</p>
+            <textarea id="input" class="print-hide" placeholder="e.g., Explain how photosynthesis works. Then press Enter."></textarea>
+        </div>
+
+        <div id="output"></div>
+        <div id="error" hidden class="print-hide"></div>
+
+        <div id="exportControls" class="export-controls print-hide" hidden>
+            <button id="savePdfButton" class="action-button">Save as PDF</button>
+            <button id="savePngButton" class="action-button">Save as PNGs</button>
+            <button id="savePptxButton" class="action-button">Save as PPTX</button>
+        </div>
+    </div>
+    <script src="index.tsx" type="module"></script>
+</body>
+</html><link rel="stylesheet" href="index.css">
+<script src="index.tsx" type="module"></script>
